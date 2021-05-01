@@ -13,7 +13,7 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <link rel="stylesheet" href="default_style.css" />
+  <link rel="stylesheet" href="https://gitcdn.link/repo/LiorAvrahami/automate_compile_lyx_with_pandoc/main/default_style.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -22,10 +22,7 @@
 <header id="title-block-header">
 <h1 class="title">a python script to automate lyx compile with pandoc - on windows</h1>
 </header>
-<div class="center"> 
-<b><a href="https://github.com/LiorAvrahami/automate_compile_lyx_with_pandoc/tree/main" style="font-size:130%;color:blue;">link to github of project</a></b>
-</div>
-<h1 id="introduction">introduction</h1><p>the pupose of this project is to bypass the lyx convertion sequance, wich ruthlessly breaks resource file names in the latex script that is passed to pandoc.</p><p>pandoc and lyx are both really grate projects. but as I have found, they really do not mesh together.</p><p>the lyx convertion protocal is based on moving the lyx file to some temperary location, doing all the convertions there, and then moving the converted products back to the work dir. during the transfer of the files, I found lyx thwarts pandoc in three ways:</p><ol><li><p>converts all the media resources to .eps files</p></li><li><p>flattens media/resource files hierarchy - rendering reletive paths broken</p></li><li><p>adds wierd text “\string” at ends of file paths</p></li></ol><p>altho I have found that 1 could be fragilely overcome in practice by using pdflatex to convert from lyx to latex, and have found that 2 could be overcome in theory (couldn’t make this work) by running pandoc with the flag --resource-path to the origenal directory, I couldn’t find a way to deal with 3. thus I made a python script to salve my problem. this project is that python script.</p><h1 id="how-to-use">how to use</h1><p>run with flag -h and you will get:</p><pre><code>this is automate_compile_lyx_with_pandoc version 2.1
+<div class="center"><p><strong><span style="color: blue"><u><a href="https://github.com/LiorAvrahami/automate_compile_lyx_with_pandoc/tree/main">link to github of project</a></u></span></strong></p></div><h1 id="introduction">introduction</h1><p>the pupose of this project is to bypass the lyx convertion sequance, wich ruthlessly breaks resource file names in the latex script that is passed to pandoc.</p><p>pandoc and lyx are both really grate projects. but as I have found, they really do not mesh together.</p><p>the lyx convertion protocal is based on moving the lyx file to some temperary location, doing all the convertions there, and then moving the converted products back to the work dir. during the transfer of the files, I found lyx thwarts pandoc in three ways:</p><ol><li><p>converts all the media resources to .eps files</p></li><li><p>flattens media/resource files hierarchy - rendering reletive paths broken</p></li><li><p>adds wierd text “\string” at ends of file paths</p></li></ol><p>altho I have found that 1 could be fragilely overcome in practice by using pdflatex to convert from lyx to latex, and have found that 2 could be overcome in theory (couldn’t make this work) by running pandoc with the flag --resource-path to the origenal directory, I couldn’t find a way to deal with 3. thus I made a python script to salve my problem. this project is that python script.</p><h1 id="how-to-use">how to use</h1><p>run with flag -h and you will get:</p><pre><code>this is automate_compile_lyx_with_pandoc version 2.1
 usage:
 python automate_compile_lyx_with_pandoc &lt;out format&gt; &lt;root path&gt; [options]
 root path: some path at which to start compiling. if a folder is specified than will run on all lyx files in folder and by default on all lyx files in subfolders.
